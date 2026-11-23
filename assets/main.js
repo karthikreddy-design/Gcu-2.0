@@ -19,7 +19,7 @@ document.addEventListener('keydown', event => {
     menuButton.focus();
   }
 });
-matchMedia('(min-width: 801px)').addEventListener('change', event => {
+matchMedia('(width > 1050px)').addEventListener('change', event => {
   if (event.matches) setMenuOpen(false);
 });
 
