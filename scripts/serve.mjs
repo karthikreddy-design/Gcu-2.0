@@ -5,6 +5,7 @@ import { resolve, extname, sep } from 'node:path';
 
 const root = resolve(process.argv[2] || '.');
 const port = Number(process.env.PORT || 5173);
+const host = process.argv[3] || '127.0.0.1';
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.ico': 'image/x-icon' };
 const server = createServer(async (req, res) => {
   if (!['GET', 'HEAD'].includes(req.method)) {
@@ -59,4 +60,4 @@ const server = createServer(async (req, res) => {
   }
 });
 server.on('error', error => { console.error(error.message); process.exitCode = 1; });
-server.listen(port, '127.0.0.1', () => console.log(`Local: http://localhost:${port}`));
+server.listen(port, host, () => console.log(`Listening at http://${host}:${port}`));
